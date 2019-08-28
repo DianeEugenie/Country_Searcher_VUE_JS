@@ -1,9 +1,11 @@
 <template lang="html">
-  <div>
-    <h1>Country</h1>
+  <div class="body">
+    <h1>Country Finder</h1>
     <div class="main-container">
       <!-- <countries-list :countries='countries'></countries-list> -->
-      <country-select :countries="countries" v-model="selectedCountry"></country-select>
+      <country-search :countries="countries" placeholder="Search for a Country"></country-search>
+
+      <!-- <country-select :countries="countries" v-model="selectedCountry"></country-select> -->
       <country-detail v-if="selectedCountry" :country="selectedCountry"></country-detail>
     </div>
   </div>
@@ -11,7 +13,8 @@
 </template>
 
 <script>
-import CountrySelect from './components/CountrySelect.vue'
+import CountrySearch from './components/CountrySearch.vue'
+// import CountrySelect from './components/CountrySelect.vue'
 // import CountriesList from './components/CountriesList.vue';
 import CountryDetail from './components/CountryDetail.vue';
 import {eventBus} from './main.js';
@@ -35,7 +38,8 @@ export default {
   },
   components: {
     // "countries-list": CountriesList,
-    "country-select": CountrySelect,
+    // "country-select": CountrySelect,
+    "country-search": CountrySearch,
     "country-detail": CountryDetail
 }
 
@@ -43,8 +47,19 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  h1 {
+    font-family: fantasy;
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    max-width: 200em;
+    align-items: center;
+  }
   .main-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
 </style>
